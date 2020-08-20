@@ -25,6 +25,11 @@ function App() {
 
  var streamCamVideo=()=> {
     var constraints = { audio: true, video: { width: 500, height: 300 } };
+    navigator.getUserMedia = navigator.getUserMedia ||
+                         navigator.webkitGetUserMedia ||
+                         navigator.mozGetUserMedia;
+
+if (navigator.getUserMedia) {
     navigator.mediaDevices
       .getUserMedia(constraints)
       .then(function(mediaStream) {
@@ -42,7 +47,7 @@ function App() {
         console.log(err.name + ": " + err.message);
       }); // always check for errors at the end.
   }
-
+ }
   // function vidOff(){
   //   var constraints = { audio: false, video: { width: 700, height: 500 } };
   //   navigator.mediaDevices
@@ -72,7 +77,7 @@ function App() {
 
 </div>
       <div style={{height:'300',width:'500'}}>
-       <video  src={streamvideosrc} autoPlay={"true"} style={{width:'500',height:'300'}} />
+       <video  src={streamvideosrc} autoPlay={true} style={{width:'500',height:'300'}} />
        <button onClick={()=>streamCamVideo()} className="form-control">Start streaming</button>
       </div>
 
