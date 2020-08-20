@@ -2,7 +2,7 @@ import React, { useEffect,useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import socketIO from 'socket.io-client'
-var ENDPOINT='http://localhost:5000'
+var ENDPOINT='http://broadcast84.herokuapp.com'
 const socket=socketIO.connect(ENDPOINT)
 
 function App() {
